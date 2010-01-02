@@ -34,6 +34,7 @@ module Merb
           :component        => request.params['controller'],
           :action           => request.params['action'],
           :request          => request,
+          :environment      => request.env.reject{|k,v| !(k =~ /^[A-Z0-9_\-]+$/)},
           :framework_env    => Merb.env,
           :notifier_name    => 'Merb::HoptoadNotifier',
           :notifier_version => Merb::HoptoadNotifier::VERSION,
